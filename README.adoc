@@ -1,0 +1,22 @@
+= Books
+
+//TODO: Books purpose
+lorem ipsum
+
+== Installation
+
+//TODO: installation guide
+lorem ipsum
+
+== Getting started
+
+//TODO: Ways to help
+lorem ipsum
+
+== Reporting issues
+
+//TODO: Reporting guidelines
+lorem ipsum
+
+== License
+Books is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
