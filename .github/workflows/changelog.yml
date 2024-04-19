@@ -1,0 +1,30 @@
+name: Verify changelog
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify-changelog:
+    name: Verify changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Verify file changes
+        run: |
+          # Check if any files were changed
+          if git diff --name-only HEAD^ HEAD | grep -e '^(*gradle*|src)'; then
+            echo "files were changed"
+            exit 0
+          else
+            echo "No file was changed"
+            exit 1
+          fi
