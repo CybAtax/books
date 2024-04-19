@@ -1,0 +1,37 @@
+name: Build Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: liberica
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v3
+      - name: Set up gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Build
+        run: ./gradlew clean build
+      - name: Upload build reports
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: build-reports
+          path: '**/build/reports/'
