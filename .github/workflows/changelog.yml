@@ -20,11 +20,18 @@ jobs:
         uses: actions/checkout@v4
       - name: Verify file changes
         run: |
-          # Check if any files were changed
-          if git diff --name-only HEAD^ HEAD | grep -e '^(*gradle*|src)'; then
-            echo "files were changed"
-            exit 0
-          else
-            echo "No file was changed"
-            exit 1
+          # Check if any files in the "src" directory have been modified
+          src_files_changed=$(git diff --name-only origin/${{ github.base_ref }} ${{ github.head_ref }} | grep '^src/')
+          
+          if [ -n "$src_files_changed" ]; then
+            # Check if the "CHANGELOG.md" file has been modified
+            changelog_modified=$(git diff --name-only origin/${{ github.base_ref }} ${{ github.head_ref }} | grep '^CHANGELOG.md$')
+          
+            if [ -z "$changelog_modified" ]; then
+              echo "Error: Changes to 'src/' directory require an update to 'CHANGELOG.md'."
+              exit 1
+            else 
+              echo "okeydokey"
+              exit 0
+            fi
           fi
