@@ -18,6 +18,7 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
+            core.info({github, context})
             const author = github.event.pull_request.user.login;
             
             const result = await github.rest.issues.addAssignees({
