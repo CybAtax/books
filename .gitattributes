@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+gradle/wrapper/gradle-wrapper.jar linguist-generated=true
+gradle/wrapper/gradle-wrapper.properties linguist-generated=true
+gradlew linguist-generated=true
+gradlew.bat linguist-generated=true
