@@ -1,0 +1,31 @@
+name: Lint GitHub actions
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
+jobs:
+  lint-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Retrieve changed files
+        id: changed-workflow-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: .github/**/*.yml
+      - name: Lint workflows
+        if: steps.changed-workflow-files.outputs.any_changed == 'true'
+        uses: oxsecurity/megalinter/flavors/cupcake@v7
+        env:
+          ENABLE_LINTERS: ACTION_ACTIONLINT
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: megalinter-report
+          path: megalinter-report
