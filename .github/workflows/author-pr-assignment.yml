@@ -28,4 +28,4 @@ jobs:
             });
             
             core.debug(JSON.stringify(result));
-            core.info(`@{author} has been assigned to the pull request: #${contxt.issue.number}`);
+            core.info(`@{author} has been assigned to the pull request: #${context.issue.number}`);
