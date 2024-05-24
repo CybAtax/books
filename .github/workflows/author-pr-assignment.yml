@@ -18,11 +18,11 @@ jobs:
           script: |
             const author = context.payload.pull_request.user.login;
             
-            const result = await github.rest.isseus.addAssigness({
-              owner: context.repo.owner
-              repo: context.repo.repo
-              issue_number: context.issue.number
-              assignee: [author]
+            const result = await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              assignee: [author],
             });
             
             core.debug(JSON.stringify(result));
