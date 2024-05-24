@@ -35,5 +35,5 @@ jobs:
               repo: context.repo.repo,
               issue_number: context.issue.number
             });
-            core.debug(JSON.stringify(assigneeResult));
-            core.info(`Assignees for PR: ${JSON.stringify(assignees.data.map(({login}) => login))}`);
+            core.debug(JSON.stringify(assigneesResult));
+            core.info(`Assignees for PR: ${JSON.stringify(assigneesResult.data.map(({login}) => login))}`);
