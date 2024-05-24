@@ -2,8 +2,6 @@ name: Assign author to PR
 
 on:
   pull_request:
-    types:
-      - opened
 
 permissions:
   issues: write
