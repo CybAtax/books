@@ -19,6 +19,7 @@ jobs:
         with:
           script: |
             core.info({github, context})
+            /*
             const author = github.event.pull_request.user.login;
             
             const result = await github.rest.issues.addAssignees({
@@ -30,3 +31,4 @@ jobs:
             
             core.debug(JSON.stringify(result));
             core.info(`@{author} has been assigned to the pull request: #${context.issue.number}`);
+            */
