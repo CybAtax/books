@@ -17,6 +17,11 @@ dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+wrapper {
+    gradleVersion="8.7"
+    distributionType= Wrapper.DistributionType.ALL
+}
+
 test {
 	useJUnitPlatform()
 }
