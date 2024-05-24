@@ -29,3 +29,10 @@ jobs:
             
             core.debug(JSON.stringify(result));
             core.info(`@${author} has been assigned to the pull request: #${context.issue.number}`);
+            
+            const assignees = await github.rest.issues.listAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            core.info(`Assignees for PR: ${assignees}`);
