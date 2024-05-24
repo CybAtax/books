@@ -3,6 +3,10 @@ name: Assign author to PR
 on:
   pull_request:
 
+permissions:
+  issues: write
+  pull-requests: write
+
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
