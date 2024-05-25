@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     // Validation
-    implementation group: "jakarta.validation", name: "jakarta.validation-api", version: "3.0.2"
+    implementation group: "jakarta.validation", name: "jakarta.validation-api", version: "3.1.0"
     implementation group: "org.hibernate.validator", name: "hibernate-validator", version: "8.0.1.Final"
 
     // Utility
