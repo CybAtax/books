@@ -27,7 +27,7 @@ dependencies {
     testImplementation group: "org.junit-pioneer", name: "junit-pioneer", version: "2.2.0"
     testImplementation group: "org.assertj", name: "assertj-core", version: "3.25.3"
     testImplementation group: "com.tngtech.archunit", name: "archunit-junit5", version: "1.2.1"
-    testImplementation group: "org.mockito", name: "mockito-core", version: "5.10.0"
+    testImplementation group: "org.mockito", name: "mockito-core", version: "5.12.0"
 }
 
 wrapper {
