@@ -24,12 +24,12 @@ jobs:
         uses: tj-actions/changed-files@v44
         with:
           files: src/**/*
-      - name: Verify CHANGELOG.md modifications
+      - name: Verify cCHANGELOG.adochangelog modifications
         id: changed-changelog-md
         if: steps.changed-src-files.outputs.any_changed == 'true'
         uses: tj-actions/changed-files@v44
         with:
-          files: CHANGELOG.md
+          files: CHANGELOG.adoc
       - name: Fail if changelog was not modified
         if: steps.changed-changelog-md.outputs.any_changed == 'false'
         run: exit 1

@@ -6,7 +6,7 @@ documentation:
   - changed-files:
     - any-glob-to-any-file:
       - docs/**
-      - CHANGELOG.md
+      - CHANGELOG.adoc
       - LICENSE.txt
       - README.adoc
 
