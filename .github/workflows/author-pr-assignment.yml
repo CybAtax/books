@@ -25,6 +25,11 @@ jobs:
             const issue_number = context.issue.number;
             const author = context.payload.pull_request.user.login;
 
+            if (author.includes("bot")) {
+              core.info(`Cannot add bot account (${author}) as assignee`);
+              return;
+            }
+
             const assignmentResult = await github.rest.issues.addAssignees({
               owner,
               repo,
