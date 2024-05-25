@@ -24,17 +24,17 @@ jobs:
             const repo = context.repo.repo;
             const issue_number = context.issue.number;
             const author = context.payload.pull_request.user.login;
-            
+
             const assignmentResult = await github.rest.issues.addAssignees({
               owner,
               repo,
               issue_number,
               assignees: [author],
             });
-            
+
             core.debug(JSON.stringify(assignmentResult));
             core.info(`@${author} has been assigned to the pull request: #${context.issue.number}`);
-            
+
             const assigneesResult = await github.rest.issues.listAssignees({
               owner,
               repo,
