@@ -3,6 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### IntelliJ IDEA ###
-.idea
-!.idea/codeStyles
+.idea/*
+!.idea/codeStyles/
+!.idea/runConfigurations/
 !.idea/icon.svg
