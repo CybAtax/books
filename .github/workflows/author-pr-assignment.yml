@@ -1,0 +1,42 @@
+name: Assign author to PR
+
+on:
+  pull_request:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
+jobs:
+  assign-author-to-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = context.issue.number;
+            const author = context.payload.pull_request.user.login;
+            
+            const assignmentResult = await github.rest.issues.addAssignees({
+              owner,
+              repo,
+              issue_number,
+              assignees: [author],
+            });
+            
+            core.debug(JSON.stringify(assignmentResult));
+            core.info(`@${author} has been assigned to the pull request: #${context.issue.number}`);
+            
+            const assigneesResult = await github.rest.issues.listAssignees({
+              owner,
+              repo,
+              issue_number
+            });
+            core.debug(JSON.stringify(assigneesResult));
+            core.info(`Assignees for PR: ${JSON.stringify(assigneesResult.data.map(({login}) => login))}`);
