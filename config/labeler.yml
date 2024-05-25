@@ -2,6 +2,13 @@ ci:
   - changed-files:
     - any-glob-to-any-file: .github/**
 
+config:
+  - changed-files:
+    - any-glob-to-any-file:
+      - .idea/codeStyles/**
+      - .idea/runConfigurations/**
+      - config/**
+
 documentation:
   - changed-files:
     - any-glob-to-any-file:
