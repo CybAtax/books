@@ -1,20 +1,20 @@
 import java.nio.charset.StandardCharsets
 
 plugins {
-	id 'java'
-	id 'com.diffplug.spotless' version '6.25.0'
+    id 'java'
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 group = 'de.trollteam'
 version = '1.0-SNAPSHOT'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	testImplementation platform('org.junit:junit-bom:5.10.2')
-	testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 wrapper {
@@ -23,30 +23,30 @@ wrapper {
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 spotless {
-	enforceCheck(false)
-	ratchetFrom "origin/main"
+    enforceCheck(false)
+    ratchetFrom "origin/main"
 
-	format "misc", {
-		target fileTree(".") {
-			exclude(".gradle", ".idea/", "build/", "gradle/", "src/")
-		}
+    format "misc", {
+        target fileTree(".") {
+            exclude(".gradle", ".idea/", "build/", "gradle/", "src/")
+        }
 
-		encoding(StandardCharsets.UTF_8)
-		trimTrailingWhitespace()
-		indentWithTabs()
-		endWithNewline()
-	}
+        encoding(StandardCharsets.UTF_8)
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
 
-	java {
-		target "src/**/java/**/*.java"
-		encoding(StandardCharsets.UTF_8)
-		removeUnusedImports()
-		prettier(["prettier": "3.0.3", "prettier-plugin-java": "2.3.0"])
-			.configFile(".prettierrc.yml")
-	}
+    java {
+        target "src/**/java/**/*.java"
+        encoding(StandardCharsets.UTF_8)
+        removeUnusedImports()
+        prettier(["prettier": "3.0.3", "prettier-plugin-java": "2.3.0"])
+            .configFile(".prettierrc.yml")
+    }
 
 }
